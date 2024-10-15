@@ -14,17 +14,24 @@ Create a function that determines the appropriate message for a person based on 
 */
 //determine a proper parameter variable name
 function CheckGymMembershipEligibility(age){
-
-  console.log("Write your code here!");
+if(age < 12){
+  console.log("You're too young for a membership, sorry.")
+}else if(age >= 12 && age <= 15){
+  console.log("You can get a junior membership!")
+}else if(age > 15 && age <= 59){
+  console.log("You can get a standard membership!")
+}else if(age > 59){
+  console.log("You can get a senior membership!")
+}
 }
 
 function StartApp(){
-  readline.question('question? ', _variableName => {
-
+  readline.question('I see you want to apply for our gym membership, how old are you?', age => {
+    CheckGymMembershipEligibility(Number(age));
     //call your function here.
     
     // readline.close();
-    if(_variableName !== "quit"){
+    if(age !== "quit"){
       StartApp();
     } else {
       readline.close();
