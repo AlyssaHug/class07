@@ -24,24 +24,50 @@ BONUS 2x DIFFICULTY:
 */
 
 //determine a proper parameter variable name
-function MathGame(paramNumber1, paramNumber2, paramOperator, paramGuess) {
-  console.log("Write your code here!");
+function MathGame(paramNumber1, paramNumber2, paramOperator, ParamGuess) {
+  let correctAnswer;
+  switch (paramOperator) {
+    case '+':
+        correctAnswer = paramNumber1 + paramNumber2;
+        break;
+    case '-':
+        correctAnswer = paramNumber1 - paramNumber2;
+        break;
+    case '*':
+        correctAnswer = paramNumber1 * paramNumber2;
+        break;
+    case '/':
+        correctAnswer = paramNumber1 / paramNumber2;
+        break;
+    default:
+        return 'Invalid operator';
+  }if(ParamGuess === correctAnswer){
+    return 'Correct! You got it!';
+  }else if(ParamGuess !== correctAnswer){
+    return 'Sorry, you got it wrong! The right answer is '+correctAnswer+'.'
+  }
 }
 
 
 //determine a proper question to ask and the proper variable name for the answer
-readline.question("the question for number 1", (_variableNameNumber1) => {
-  readline.question("the question for number 1", (_variableNameNumber2) => {
-    readline.question("the question for operator such as +-*/ ", (_variableNameOperator) => {
+readline.question("Give me a number", (Number1) => {
+  readline.question("Give me a second number", (Number2) => {
+    readline.question("What is the operator?", (Operator) => {
       //make an infinite recall for guessing question
       function StartGame() {
     
         //determine a proper question to ask and the proper variable name for the user to guess
-        readline.question("the question for guessing ", (_variableNameGuess) => {
-          
+        readline.question("What is your guess?", (Guess) => {
+          const result = MathGame(
+            parseFloat(Number1),
+            parseFloat(Number2),
+            Operator,
+            parseFloat(Guess)
+          );
+          console.log(result);
           //call your function here
     
-          if (_variableNameGuess === "quit") {
+          if (Guess === "quit") {
             readline.close();
           } else {
             StartGame();
