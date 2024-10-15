@@ -20,32 +20,35 @@ BONUS DIFFICULTY2!!!
 */
 
 //determine a proper parameter variable name
-function WordGuess(paramSecretWord, paramGuess) {
-
+function WordGuess(paramGuess, secret) {
+if(paramGuess === secret){
+  console.log("Correct! You guessed right!")
+}else if(paramGuess !== secret){
+  console.log("Wrong! Try again!")
+}
   // ==============try this code out first before attempting the BONUS DIFFICULTY!!!
-  let testWord = "abcde";
-  console.log("the number of letters---", testWord.length);
+  //let testWord = "abcde";
+  //console.log("the number of letters---", testWord.length);
   //first letter starts at 0
-  console.log("each letter of testWord---", testWord[0], testWord[1], testWord[2], testWord[3], testWord[4]); 
-  console.log("first and last letter of testword---", testWord[0], testWord[testWord.length-1]);
-  // ===============
+ // console.log("each letter of testWord---", testWord[0], testWord[1], testWord[2], testWord[3], testWord[4]); 
+  //console.log("first and last letter of testword---", testWord[0], testWord[testWord.length-1]);
 
-
-  console.log("Write your code here!");
 }
 
+
 //determine a proper question to ask and the proper variable name for the answer
-readline.question("the question for secret word", (_variableNameSecret) => {
+readline.question("Please choose a word for the secret code.", (Secret) => {
 
   //make an infinite recall for guessing question
   function StartGame() {
 
     //determine a proper question to ask and the proper variable name for the user to guess
-    readline.question("the question for guessing ", (_variableNameGuess) => {
-
+    readline.question("What's the secret code?", (Guess) => {
+      const result = WordGuess(Guess, Secret);
+      console.log(result);
       //call your function here
 
-      if (_variableNameGuess === "quit") {
+      if (Guess === "quit") {
         readline.close();
       } else {
         StartGame();
