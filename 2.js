@@ -14,17 +14,26 @@ Create a function that determines the type of movie ticket a person should purch
 
 //determine a proper parameter variable name
 function DetermineTicketType(age){
-
-  console.log("Write your code here!");
+if (age < 5){
+  console.log("You get a free ticket!")
+} else if(age >= 5 && age <= 12){
+  console.log("You will need a child ticket.")
+}else if(age >=13 && age <= 17){
+  console.log("You need a teen ticket.")
+}else if(age >= 18 && age <= 64){
+  console.log("You will need an adult ticket.")
+}else if(age >= 65){
+  console.log("You will need a senior ticket.")
+}
 }
 
 function StartApp(){
-  readline.question('question? ', _variableName => {
-
+  readline.question("Your age will determine what ticket you'll need for this movie. How old are you?", age => {
+    DetermineTicketType(Number(age));
     //call your function here.
     
     // readline.close();
-    if(_variableName !== "quit"){
+    if(age !== "quit"){
       StartApp();
     } else {
       readline.close();
